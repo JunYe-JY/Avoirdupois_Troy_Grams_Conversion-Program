@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include <limits>
 using namespace std;
 
 /*
@@ -20,6 +21,10 @@ public:
   void getMass();
 };
 
+void clearKeyboardBuffer(){ //function that clears keyboard buffer
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
 void Mass::getMass() {
   cout << endl << "The conversions are: " << endl;
   cout << "Mass in Avoirdupois pounds is " << massinDrams / 256 << endl;
@@ -31,18 +36,36 @@ void Mass::setMassAvoirdupoisPounds() {
   double input;
   cout << "Please enter a mass in Avoirdupois pounds: ";
   cin >> input;
+  while (input == 0){
+    clearKeyboardBuffer();
+    cout << endl << "Mass must be a number." << endl;
+    cout << "Please enter a mass in Avoirdupois pounds: ";
+    cin >> input;
+  }
   massinDrams = input * 256;
 }
 void Mass::setMassTroyPounds() {
   double input;
   cout << "Please enter a mass in Troy pounds: ";
   cin >> input;
+  while (input == 0){
+    clearKeyboardBuffer();
+    cout << endl << "Mass must be a number." << endl;
+    cout << "Please enter a mass in Avoirdupois pounds: ";
+    cin >> input;
+  }
   massinDrams = input * 96;
 }
 void Mass::setMassMetricGrams() {
   double input;
   cout << "Please enter a mass in grams: ";
   cin >> input;
+  while (input == 0){
+    clearKeyboardBuffer();
+    cout << endl << "Mass must be a number." << endl;
+    cout << "Please enter a mass in Avoirdupois pounds: ";
+    cin >> input;
+  }
   massinDrams = input / 1.7718451953125;
 }
 
@@ -79,5 +102,5 @@ int main() {
   } while (input != 0);
 
   cout << "Thanks for using the mass conversion program!";
-  return 0;
+    return 0;
 }
