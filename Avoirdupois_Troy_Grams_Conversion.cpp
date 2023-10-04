@@ -95,9 +95,6 @@ int main() {
       Mass.getMass();
       break;
     }
-    default: {
-      cout << "Please enter 1, 2, 3, or 0." << endl;
-    }
     }
   } while (input != 0);
 
